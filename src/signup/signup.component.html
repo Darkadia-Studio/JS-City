@@ -1,0 +1,37 @@
+<form ng-class="{ invalid: signForm.$invalid && signForm.$dirty }" 
+    name="signForm" novalidate ng-submit="$ctrl.submit(signForm, $ctrl.user)" class="well">
+
+    <div class="form-group">
+        <label for="username">Nom</label>
+        <input ng-model="$ctrl.user.username" 
+            name="username" 
+            required
+            ng-minlength="4"
+            id="username" type="text" class="form-control">
+        <p class="text-danger" 
+            ng-if="signForm.username.$error.required && signForm.username.$dirty">Obligatoire</p>
+        <p class="text-danger" 
+            ng-if="signForm.username.$error.minlength && signForm.username.$dirty">Trop court</p>
+    </div>
+
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input 
+            ng-model="$ctrl.user.email"
+            name="email" 
+            id="email" type="mail" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input 
+            ng-model="$ctrl.user.password"
+            name="password" 
+            id="password" type="password" class="form-control">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Enregistrer</button>
+
+    <a type="button" ng-href="/users" class="btn">Annuler</a>
+
+</form>
