@@ -4,7 +4,12 @@
       "username": "username",
       "email": "email@test.com",
       "password": "156445654",
-      "scores": "[{\"date\":\"24/01/2016\",\"score\":0}]",
+      "scores": [
+        {
+          "date": "24/01/2016",
+          "score": 0
+        }
+      ],
       "id": 1
     }
   ],
