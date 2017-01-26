@@ -1,6 +1,6 @@
 class SignupController{
-    constructor($JSCityService){
-        this.$JSCityService = $JSCityService;
+    constructor(JSCityService){
+        this.JSCityService = JSCityService;
     }
 
     signup(){
