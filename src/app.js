@@ -4,7 +4,7 @@ import ngRoute from 'angular-route';
 import {SignupComponent} from './signup/signup.component';
 import {GameComponent} from './game/game.component';
 
-import {GameDirective} from './game/game.directive';
+import {GameCanvasComponent, GameDirectivet} from './game/game.canvas.component';
 
 import {JSCityService} from './JSCity.service';
 
@@ -17,10 +17,12 @@ angular.module('app', [
 
 .component('signupComponent', SignupComponent)
 .component('gameComponent', GameComponent)
+//.component("drawing", GameCanvasComponent)
+.directive('drawingCanvas', () => new GameCanvasComponent)
 
-.directive("drawing", GameDirective)
+.config(function($routeProvider, $locationProvider, $logProvider) {
 
-.config(function($routeProvider, $locationProvider) {
+  $logProvider.debugEnabled(true);
 
   $locationProvider.html5Mode(true);
 
