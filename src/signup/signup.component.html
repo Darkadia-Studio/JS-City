@@ -1,37 +1,25 @@
-<form ng-class="{ invalid: signForm.$invalid && signForm.$dirty }" 
-    name="signForm" novalidate ng-submit="$ctrl.submit(signForm, $ctrl.user)" class="well">
-
-    <div class="form-group">
-        <label for="username">Nom</label>
-        <input ng-model="$ctrl.user.username" 
-            name="username" 
-            required
-            ng-minlength="4"
-            id="username" type="text" class="form-control">
-        <p class="text-danger" 
-            ng-if="signForm.username.$error.required && signForm.username.$dirty">Obligatoire</p>
-        <p class="text-danger" 
-            ng-if="signForm.username.$error.minlength && signForm.username.$dirty">Trop court</p>
-    </div>
-
-    <div class="form-group">
-        <label for="email">Email</label>
-        <input 
-            ng-model="$ctrl.user.email"
-            name="email" 
-            id="email" type="mail" class="form-control">
-    </div>
-
-    <div class="form-group">
-        <label for="password">Password</label>
-        <input 
-            ng-model="$ctrl.user.password"
-            name="password" 
-            id="password" type="password" class="form-control">
-    </div>
-
-    <button type="submit" class="btn btn-primary">Enregistrer</button>
-
-    <a type="button" ng-href="/users" class="btn">Annuler</a>
-
-</form>
+<div class="col-md-6 col-md-offset-3">
+    <h2>Inscription</h2>
+    <form name="form" ng-submit="$ctrl.register()" role="form">
+        <div class="form-group" ng-class="{ 'has-error': form.username.$dirty && form.username.$error.required }">
+            <label for="username">Pseudo</label>
+            <input type="text" name="username" id="username" class="form-control" ng-model="$ctrl.user.username" required />
+            <span ng-show="form.username.$dirty && form.username.$error.required" class="help-block">Username is required</span>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': form.email.$dirty && form.email.$error.required }">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" class="form-control" ng-model="$ctrl.user.email" required />
+            <span ng-show="form.email.$dirty && form.email.$error.required" class="help-block">Email is required</span>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': form.password.$dirty && form.password.$error.required }">
+            <label for="password">Mot de passe</label>
+            <input type="password" name="password" id="password" class="form-control" ng-model="$ctrl.user.password" required />
+            <span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">Password is required</span>
+        </div>
+        <div class="form-actions">
+            <button type="submit" ng-disabled="form.$invalid || $ctrl.dataLoading" class="btn btn-primary">Register</button>
+            <img ng-if="$ctrl.dataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+            <a href="#!/login" class="btn btn-link">Cancel</a>
+        </div>
+    </form>
+</div>

@@ -2,11 +2,14 @@ import angular from 'angular';
 import ngRoute from 'angular-route';
 
 import {SignupComponent} from './signup/signup.component';
+import {SigninComponent} from './signin/signin.component';
 import {GameComponent} from './game/game.component';
+import {HomeComponent} from './home/home.component';
 
 import {GameCanvasComponent, GameDirectivet} from './game/game.canvas.component';
 
-import {JSCityService} from './JSCity.service';
+import {JSCityService} from './services/JSCity.service';
+import {UserService} from './services/user.service';
 
 angular.module('app', [
   ngRoute
@@ -14,9 +17,12 @@ angular.module('app', [
 .value('Version', '0.0.1')
 
 .service('JSCityService', JSCityService)
+.service('UserService', UserService)
 
+.component('signinComponent', SigninComponent)
 .component('signupComponent', SignupComponent)
 .component('gameComponent', GameComponent)
+.component('home', HomeComponent)
 //.component("drawing", GameCanvasComponent)
 .directive('drawingCanvas', () => new GameCanvasComponent)
 
@@ -28,7 +34,7 @@ angular.module('app', [
 
   $routeProvider
     .when('/', {
-      template: '<h1>Bienvenue</h1>'
+      template: '<home></home>'
     })
     .when('/signup', {
       template: '<signup-component></signup-component>'
