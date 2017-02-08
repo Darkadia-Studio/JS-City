@@ -5,6 +5,7 @@ import {SignupComponent} from './signup/signup.component';
 import {SigninComponent} from './signin/signin.component';
 import {GameComponent} from './game/game.component';
 import {HomeComponent} from './home/home.component';
+import {LoginComponent} from './profil/login/login.component';
 
 import {GameCanvasComponent, GameDirectivet} from './game/game.canvas.component';
 
@@ -23,6 +24,7 @@ angular.module('app', [
 .component('signupComponent', SignupComponent)
 .component('gameComponent', GameComponent)
 .component('home', HomeComponent)
+.component('loginComponent' LoginComponent)
 //.component("drawing", GameCanvasComponent)
 .directive('drawingCanvas', () => new GameCanvasComponent)
 
