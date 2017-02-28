@@ -5,12 +5,12 @@
   "main": "index.js",
   "scripts": {
     "api": "json-server data.json",
-    "start": "webpack-dev-server --content-base public --hot --inline --history-api-fallback",
+    "start": "webpack-dev-server --content-base public --hot --inline --history-api-fallback --port=42420",
     "webpack": "webpack",
     "build": "webpack -p",
     "test": "karma start"
   },
-  "author": "",
+  "author": "Nivvdiy",
   "license": "ISC",
    "devDependencies": {
     "babel-core": "^6.21.0",

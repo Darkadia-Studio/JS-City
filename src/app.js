@@ -24,7 +24,7 @@ angular.module('app', [
 .component('signupComponent', SignupComponent)
 .component('gameComponent', GameComponent)
 .component('home', HomeComponent)
-.component('loginComponent' LoginComponent)
+.component('loginComponent', LoginComponent)
 //.component("drawing", GameCanvasComponent)
 .directive('drawingCanvas', () => new GameCanvasComponent)
 
