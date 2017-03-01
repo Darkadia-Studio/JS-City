@@ -55,7 +55,7 @@ export class UserService{
     }
 
     connect(user) {
-       return this.$http.post(`${ api }/signin`, user)
+       return this.$http.post(`${ this.api+this.userApi }signin`, user)
             .then(response => {
                 let user = response.data
                 if(!response.data) {

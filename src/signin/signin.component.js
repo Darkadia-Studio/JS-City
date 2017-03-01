@@ -10,6 +10,7 @@ class SigninController{
     }
 
     authenticate(form, user){
+        console.log("Authenticate");
         if(form.$invalid) return;
         this.UserService.connect(user)
             .then(user=> {
