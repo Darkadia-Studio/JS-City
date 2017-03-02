@@ -4,4 +4,9 @@ export class MailService{
         this.$scope = $scope;
         this.from = "noreply.jscity@darkadia-studio.com";
     }
+
+    sendActivationMail(user){
+        $.post("functions/test.php", { json_string:JSON.stringify({name:"John", time:"2pm"}) });
+    }
+
 }
