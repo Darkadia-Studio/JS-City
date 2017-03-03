@@ -9,9 +9,16 @@ class SignupController{
     saveUser(form, user) {
         if (form.$invalid) return;
         this.user = angular.copy(user);
-        this.UserService.create(this.user);
-        //this.authentification(this.user);
-    }
+            this.UserService.create(this.user)
+                .then(response => {
+                    console.log("Réponse ", response);
+                    if (response.success) {
+                        this.$location.path('/login');
+                    } else {
+                        this.dataLoading = false;
+                    }
+                });
+        }
 }
 
 export const SignupComponent = {
