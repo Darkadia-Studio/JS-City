@@ -1,8 +1,9 @@
 class SignupController{
-    constructor(UserService, $location, $rootScope) {
+    constructor(UserService, MailService, $location, $rootScope) {
         this.UserService = UserService;
         this.$location = $location;
         this.$rootScope = $rootScope;
+        this.MailService = MailService;
     }
 
     saveUser(form, user) {

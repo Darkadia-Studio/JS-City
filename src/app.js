@@ -11,6 +11,7 @@ import {GameCanvasComponent, GameDirectivet} from './game/game.canvas.component'
 
 import {JSCityService} from './services/JSCity.service';
 import {UserService} from './services/user.service';
+import {MailService} from './services/mail.service';
 
 angular.module('app', [
   ngRoute
@@ -19,6 +20,7 @@ angular.module('app', [
 
 .service('JSCityService', JSCityService)
 .service('UserService', UserService)
+.service('MailService', MailService)
 
 .component('signinComponent', SigninComponent)
 .component('signupComponent', SignupComponent)

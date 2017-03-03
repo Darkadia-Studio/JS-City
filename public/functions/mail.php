@@ -1,23 +1,22 @@
 <?php
-    if(isset($_POST['mailTo'])) {
+    if(isset($_POST['data'])) {
         $email_to = null;
         $email_from = null;
         $email_subject = null;
         $email_message = null;
         $mail_replace = null;
 
-        if(!isset($_POST['mailTo']) ||
-            !isset($_POST['mailFrom']) ||
-            !isset($_POST['subject']) ||
-            !isset($_POST['message'])) {
+        $data = json_decode($_POST['data']);
+
+        if(!isset($_POST['data'])) {
                 died('We are sorry, but there appears to be a problem with the form you submitted.');
         }
 
-        $email_to = $_POST['mailTo'];
-        $email_from = $_POST['mailFrom'];
-        $email_subject = $_POST['subject'];
-        $email_message = $_POST['message'];
-        $mail_replace = $_POST['replace'];
+        $email_to = $data['mailTo'];
+        $email_from = $data['mailFrom'];
+        $email_subject = $data['subject'];
+        $email_message = $data['message'];
+        $mail_replace = $data['replace'];
         
 
         foreach($mail_replace as $key => $value){
