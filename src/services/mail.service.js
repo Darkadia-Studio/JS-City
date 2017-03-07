@@ -23,7 +23,7 @@ export class MailService{
 
         var message = mail;
 
-        console.log(message);
+        //console.log(message);
 
         var replace = {
             username:user.username,
@@ -34,8 +34,12 @@ export class MailService{
             type: "POST",
             url: "https://www.darkadia-studio.com/mail.php",
             data: JSON.stringify({mailTo:to, mailFrom:this.from, subject:subject, message:message, replace:replace}),
-            success: function(data){console.log("Success",data)},
-            error: function(data, error){console.log("Error",error)},
+            success: function(data){
+                //console.log("Success",data);
+            },
+            error: function(data, error){
+                //console.log("Error",error);
+            },
             dataType: "json"
         });
     }

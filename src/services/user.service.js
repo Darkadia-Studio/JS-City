@@ -3,6 +3,7 @@ export class UserService{
         this.$http = $http;
         this.api = "http://localhost:3000/";
         this.userApi = "users/";
+        this.crypto = require('crypto');
     }
 
     getUsers(){
@@ -33,12 +34,43 @@ export class UserService{
         let uri = this.api + this.userApi;
         let response = {};
         user.scores = [];
+
+        return this.getUsers().then(data => {
+            return data.filter(data => {
+            return data.username.toLowerCase() === user.username.toLowerCase() || data.email.toLowerCase() === user.email.toLowerCase();
+        });
+    }).then(data => {
+                if (data.length>0) {
+                    if(data[0].username.toLowerCase() === user.username.toLowerCase()){
+                        response = { success: false, error:"error.exist.username", message: 'Le pseudo "' + user.username + '" est déjà pris' };
+                    } else if(data[0].email.toLowerCase() === user.email.toLowerCase()){
+                        response = { success: false, error:"error.exist.email", message: 'L\'adresse email "' + user.email + '" est déjà utilisé' };
+                    } else {
+                        response = { success: false, error:"error.unknow", message: 'Une erreur inconnue est survenue' };
+                    }
+                    console.log("Erreur");
+                } else {
+                    console.log("Sucess");
+                    var pass = this.crypto.createHash('sha512').update(user.password).digest('hex');
+                    user.password = pass;
+                    this.$http.post(uri, user)
+                        .then(response =>  response.data);
+                    response = { success: true};
+                }
+        }).then(() => {
+                return Promise.resolve(response);
+            });
+
         return this.getUserByName(user.username)
             .then(data => {
                 //console.log("User ",user);
                 if (data.length>0) {
-                    response = { success: false, message: 'Username "' + user.username + '" is already taken' };
+                    console.log("Erreur");
+                    response = { success: false, error:"exist.username", message: 'Le pseudo "' + user.username + '" est déjà pris' };
                 } else {
+                    console.log("Sucess");
+                    var pass = crypto.createHash('sha512').update(user.password).digest('hex');
+                    user.password = pass;
                     this.$http.post(uri, user)
                         .then(response =>  response.data);
                     response = { success: true};

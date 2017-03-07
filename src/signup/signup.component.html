@@ -1,29 +1,28 @@
-<div class="container">
-    <div class="row">
-        <form name="inscriptionForm" novalidate ng-submit="$ctrl.saveUser(inscriptionForm, $ctrl.user)" class="well">
-                <h2>Inscription</h2>
-            <div class="form-group ">
-                <label>Pseudo</label>
-                <input ng-model="$ctrl.user.username" name='username' id="username" type="text" class="form-control" required>
-                <p ng-if="inscriptionForm.username.$invalid && inscriptionForm.username.$dirty"  class="text-danger">
-                    Votre pseudo est incorrect
-                </p>
-            </div>
-            <div class="form-group ">
-                <label>email</label>
-                <input ng-model="$ctrl.user.email" name='email' id="email" type="email" class="form-control" required>
-                <p ng-if="inscriptionForm.email.$invalid && inscriptionForm.email.$dirty"  class="text-danger">
-                    Veuillez renseigner une adresse email correct
-                </p>
-            </div>
-            <div class="form-group ">
-                <label>Mot de passe</label>
-                <input ng-model="$ctrl.user.password" name='password' id="password" ng-minlength='6' type="password" class="form-control" required>
-                <p ng-if="inscriptionForm.password.$invalid && inscriptionForm.password.$dirty && inscriptionForm.password.$error.minlength" class="text-danger">
-                    Votre mot de passe dois contenir minimum 6 caractères
-                </p>
-            </div>
-            <button type="submit" class="btn btn-primary">Créer un compte</button>
-        </form>
-    </div>
+<div class="col-md-6 col-md-offset-3">
+    <h2>Inscription</h2>
+    <form id="form" name="form" ng-submit="$ctrl.register(form, $ctrl.user)" role="form">
+        <div class="form-group" ng-class="{ 'has-error': form.username.hasError }">
+            <label for="username">Pseudo</label>
+            <input type="text" name="username" id="username" class="form-control" ng-model="$ctrl.user.username" />
+            <span ng-show="form.username.hasError" class="help-block">{{form.username.error}}</span>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': form.email.hasError }">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" class="form-control" ng-model="$ctrl.user.email" />
+            <span ng-show="form.email.hasError" class="help-block">{{form.email.error}}</span>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': form.password.hasError }">
+            <label for="password">Mot de passe</label>
+            <input type="password" name="password" id="password" class="form-control" ng-model="$ctrl.user.password" />
+            <span ng-show="form.password.hasError" class="help-block">{{form.password.error}}</span>
+        </div>
+        <div class="form-actions">
+            <button type="submit" ng-disabled="$ctrl.dataLoading" class="btn btn-primary">Register</button>
+            <img ng-if="$ctrl.dataLoading" src="./img/loading.gif" />
+            <button type="reset" ng-click="$ctrl.resetForm(form, $ctrl.user)" class="btn btn-warning">Cancel</button>
+        </div>
+        <div ng-if="$ctrl.hasMainError" class="alert alert-danger" role="alert">
+            {{$ctrl.mainError}}
+        </div>
+    </form>
 </div>

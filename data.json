@@ -1,21 +1,16 @@
 {
   "users": [
     {
-      "username": "username",
-      "email": "email@test.com",
-      "password": "156445654",
-      "scores": [
-        {
-          "date": "24/01/2016",
-          "score": 0
-        }
-      ],
+      "username": "Username",
+      "email": "username@mail.com",
+      "password": "ba3253876aed6bc22d4a6ff53d8406c6ad864195ed144ab5c87621b6c233b548baeae6956df346ec8c17f5ea10f35ee3cbc514797ed7ddd3145464e2a0bab413",
+      "scores": [],
       "id": 1
     },
     {
       "username": "Nivvdiy",
       "email": "nivvdiy@gmail.com",
-      "password": "19041991",
+      "password": "87b5ac4bff6c4fa34ad2f30d57097f7887c40aade6fb8cb23cd94a12c7b28acc414c698ef471ae93f29b0dde9629c79d9c0710b9350bd59dcfa030be8eb2ffad",
       "scores": [],
       "id": 2
     }
